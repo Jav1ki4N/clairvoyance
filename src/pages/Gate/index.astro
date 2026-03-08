@@ -1,0 +1,48 @@
+---
+import '../../Styles/global.css';
+const title = "Clairvoyance";
+const content = ["1", "2", "3"];
+const color = "crimson";
+const testcss = 
+{
+    tcolor: "green",
+    tfontsize: "2em",
+    tfontweight: "bold"
+}
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+    </head>
+    <body>
+        <a href="/About">About</a>
+        <h1>{title}</h1>
+        <ul>
+            {content.map((content)=><li class = "content">{content}</li>)}
+        </ul>
+        <p class = "testcss">Test</p>
+    </body>
+</html>
+
+<style define:vars={{color,...testcss}}>
+    h1 {
+        color: red;
+        font-size: 4em;
+    }
+
+    .content
+    {
+        color: var(--color);
+    }
+    .testcss
+    {
+        color: var(--tcolor);
+        font-size: var(--tfontsize);
+        font-weight: var(--tfontweight);
+    }
+</style>
