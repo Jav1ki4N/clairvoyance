@@ -3,7 +3,9 @@ import "../Styles/base.css"
 import Header from "../components/Header/header.astro"
 import Footer from "../components/Footer/footer.astro"
 const {title} = Astro.props;
+const {bodyClass} = Astro.props;
 ---
+<!-- Base Layout of Pages -->
 <!doctype html>
 <html lang="zh-CN">
     <head>
@@ -12,7 +14,7 @@ const {title} = Astro.props;
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
     </head>
-    <body>
+    <body class={bodyClass}>
         <Header /> 
         <slot />
         <Footer /> 

@@ -3,7 +3,60 @@
 /* Vars (colors mainly) */
 @import './vars.css';
 
-/* Navigator */
+/*********************************************************************************************/
+/* Basis */
+
+/* make the page fill viewport and allow footer to stick */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* ensure body is at least full height */
+}
+
+/*********************************************************************************************/
+/* Header & Navigator & footer */
+
+/* prevent text selection in header/footer */
+.header,
+.footer {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.header header
+{
+    /* sub element (e.g. nav) alignment */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    /* element padding */
+    padding-top: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.header a
+{
+    /* Header Texts, href */
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+}
+
+.header a:visited
+{
+    /* Header Texts, href, after visited */
+    color: inherit;
+}
+
+.header a:active 
+{
+    /* Header Texts, href, on clicked */
+    color: inherit;
+}
 
 .nav
 {
@@ -30,4 +83,17 @@
 {
     /* Navigation Texts, href, on clicked */
     color: inherit;
+}
+
+.footer
+{
+    margin-top: auto;
+}
+
+.footer footer {
+    display: flex;
+}
+
+.footer footer copyright {
+    margin: 0 auto;
 }

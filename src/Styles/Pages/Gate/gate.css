@@ -1,0 +1,8 @@
+/* Regular Styles for the Gate Page */
+@import '/src/Styles/vars.css';
+
+.gate 
+{
+    /* Gate page background */
+    background-color: var(--electric-lime);
+}
