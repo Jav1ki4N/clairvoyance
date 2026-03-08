@@ -1,0 +1,20 @@
+---
+import "../Styles/base.css"
+import Header from "../components/Header/header.astro"
+import Footer from "../components/Footer/footer.astro"
+const {title} = Astro.props;
+---
+<!doctype html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+    </head>
+    <body>
+        <Header /> 
+        <slot />
+        <Footer /> 
+    </body>
+</html>

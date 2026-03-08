@@ -1,6 +1,7 @@
 ---
+layout: ../../layouts/Doc/doc.astro
 title: Prototype
-Author: Ian
+author: Ian
 pubDate: 2026-03-08
 description: Prototype
 tags: ["Archives","Prototype"]

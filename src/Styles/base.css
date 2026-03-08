@@ -1,0 +1,33 @@
+/* Header & Footer */
+
+/* Vars (colors mainly) */
+@import './vars.css';
+
+/* Navigator */
+
+.nav
+{
+    /* Navigation Container */
+    display: flex;
+    gap: 1rem;
+}
+
+.nav a
+{
+    /* Navigation Texts, href */
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+}
+
+.nav a:visited
+{
+    /* Navigation Texts, href, after visited */
+    color: inherit;
+}
+
+.nav a:active 
+{
+    /* Navigation Texts, href, on clicked */
+    color: inherit;
+}

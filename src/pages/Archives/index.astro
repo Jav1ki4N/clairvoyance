@@ -1,19 +1,9 @@
 ---
+import BaseLayout from '../../layouts/base.astro';
+const docsList = Object.values(import.meta.glob('./*.md', { eager: true }));
+const pageTitle = "Clairvoyance | Archives";
 ---
 
-<!DOCTYPE html>
-<html lang="zh-CN">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <title>Clairvoyance</title>
-    </head>
-    <body>
-        <ul>
-            <li><a href="/Archives/Prototype/">Prototype</a></li>
-        </ul>
-        <h1>Clairvoyance</h1>
-        <p>Test</p>
-    </body>
-</html>
+<BaseLayout title={pageTitle}>
+    {docsList.map((doc: any)=><li><a href={doc.url}>{doc.frontmatter.title}</a></li>)}
+</BaseLayout>
