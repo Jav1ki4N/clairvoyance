@@ -1,22 +1,48 @@
-/* Header & Footer */
+/*=========================================================================================================================*/
+/*                                                   WebStruct: ASTRO                                                      */
+/*                                           Default style of the global page                                              */
+/*                         Used in pages with <BaseLayout></BaseLayout> if imported as BaseLayout                          */
+/*=========================================================================================================================*/
 
-/* Vars (colors mainly) */
+/*=================*/
+/*    CSS Vars     */
+/*=================*/
 @import './vars.css';
 
-/*********************************************************************************************/
-/* Basis */
-
-/* make the page fill viewport and allow footer to stick */
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* ensure body is at least full height */
+/*===============================================================================================*/
+/*      Fonts      */
+/*===============================================================================================*/
+@font-face {
+    font-family: "Cormorant Garamond Regular";
+    src: url("../assets/fonts/Cormorant_Garamond/CormorantGaramond-Regular.woff2") format("woff2");
 }
 
-/*********************************************************************************************/
-/* Header & Navigator & footer */
+/*===============================================================================================*/
+/*                                   HTML Body CSS Style                                        */
+/*===============================================================================================*/
 
-/* prevent text selection in header/footer */
+body {
+    /* Default Font */
+    font-family: "Cormorant Garamond Regular", serif;
+
+    /* Default Background Color */
+    background-color: var(--paperlike);
+
+    /* Remove default margin on left & right side */
+    margin: 0;
+    
+    /* Element using flexbox layout */
+    /* Ensure that each part is in its right place */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/*===============================================================================================*/
+/*                                 Components General Style                                      */
+/*===============================================================================================*/
+
+/* Disable text selection in header & footer area */
 .header,
 .footer {
     -webkit-user-select: none;
@@ -25,11 +51,21 @@ body {
     user-select: none;
 }
 
+/*===============================================================================================*/
+/*                                           Header                                              */
+/*       To modify header structure, see ../components/Header/header.astro                       */
+/*===============================================================================================*/
+
+/* Header General */
 .header header
 {
-    /* sub element (e.g. nav) alignment */
+    /* Element in header using flexbox layout */
     display: flex;
-    align-items: center;
+    
+    /* Vertical alignment */
+    align-items: flex-end;
+
+    /* Horizontal alignment, elements will be placed evenly */
     justify-content: space-between;
 
     /* element padding */
@@ -38,62 +74,133 @@ body {
     padding-right: 2%;
 }
 
-.header a
+/* Header Logo on left side */
+/* Applied on all status    */
+.header .header_logo a,
+.header .header_logo a:visited,
+.header .header_logo a:active
 {
-    /* Header Texts, href */
+    /* Remove link decoration */
     text-decoration: none;
     color: inherit;
+
     font-weight: bold;
+    font-size: 2rem;
 }
 
-.header a:visited
-{
-    /* Header Texts, href, after visited */
-    color: inherit;
-}
 
-.header a:active 
-{
-    /* Header Texts, href, on clicked */
-    color: inherit;
-}
+/*===============================================================================================*/
+/*                                         Navigation                                            */
+/* Navigator is a sub-component of the header, so .header also applies to it                     */
+/* To modify navigation structure, see ../components/Navigation/navigation.astro                 */
+/*===============================================================================================*/
 
+
+/* Navigator General */
 .nav
 {
-    /* Navigation Container */
+    /* Element using flexbox layout */
     display: flex;
-    gap: 1rem;
+    align-items: flex-end;
+
+    /* Place nav group to the right inside header */
+    justify-content: flex-end;
 }
 
-.nav a
+.nav .tags
+{
+    /* Element using flexbox layout */
+    display: flex;
+    align-items: flex-end;
+
+    /* Gap between navigation items, or tags */
+    --nav-gap: 2rem;
+    gap: var(--nav-gap);
+}
+
+.nav .tags a,
+.nav .tags a:visited,
+.nav .tags a:active
 {
     /* Navigation Texts, href */
+    font-size: 1.5em;
     text-decoration: none;
     color: inherit;
     font-weight: bold;
+    position: relative;
 }
 
-.nav a:visited
-{
-    /* Navigation Texts, href, after visited */
+.nav .tags a:not(:last-child)::after {
+    content: "|";
     color: inherit;
+    opacity: 0.65;
+    position: absolute;
+    top: 50%;
+    left: calc(100% + (var(--nav-gap) / 2));
+    transform: translate(-50%, -50%);
+    pointer-events: none;
 }
 
-.nav a:active 
-{
-    /* Navigation Texts, href, on clicked */
-    color: inherit;
-}
 
+/*===============================================================================================*/
+/*                                           Footer                                              */
+/*       To modify footer structure, see ../components/Footer/footer.astro                       */
+/*===============================================================================================*/
+
+/* Footer General */
 .footer
 {
+    /* Push footer to the bottom when page content is short */
     margin-top: auto;
+
+    /* Footer color theme */
+    background-color: #1f1f1f;
+    color: var(--paperlike);
+
+    /* Footer typography */
+    font-family: monospace, serif;
+
+    /* Vertical breathing space */
+    padding: 0.75rem 0;
 }
 
+/* Footer layout */
 .footer footer {
+    /* Element using flexbox layout */
     display: flex;
 }
 
+/* Footer content container */
 .footer footer copyright {
+    /* Horizontal centering */
     margin: 0 auto;
+}
+
+.footer footer copyright p {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.15em;
+    margin: 0;
+}
+
+/* Footer links (all states) */
+.footer footer copyright a,
+.footer footer copyright a:visited,
+.footer footer copyright a:active {
+    /* Link style */
+    text-decoration: none;
+    color: inherit;
+}
+
+.footer .github-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+}
+
+.footer .github-icon {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    flex-shrink: 0;
 }
